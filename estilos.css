@@ -1,0 +1,119 @@
+/* Reset básico */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+}
+
+/* Layout principal */
+.tienda-layout {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "sidebar"
+        "productos"
+        "footer";
+    grid-template-columns: 1fr;
+}
+
+/* Header */
+.tienda-header {
+    grid-area: header;
+    background: #1e272e;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+/* Sidebar de filtros */
+.filtros {
+    grid-area: sidebar;
+    background: #dcdde1;
+    padding: 1em;
+    font-size: 0.95em;
+}
+
+/* Grid de productos */
+.productos-grid {
+    grid-area: productos;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1em;
+    padding: 1em;
+}
+
+/* Producto normal */
+.producto {
+    background: white;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.producto img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.producto h3, .producto h2 {
+    margin: 0.5em 0 0.3em;
+}
+
+.producto p {
+    color: #2f3640;
+    font-weight: bold;
+}
+
+/* Hover */
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Producto destacado */
+.destacado {
+    grid-column: span 1;
+    grid-row: span 1;
+    background: #f1c40f;
+}
+
+/* Footer */
+.tienda-footer {
+    grid-area: footer;
+    background: #1e272e;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    font-size: 0.9em;
+}
+
+/* Responsive tablets */
+@media (min-width: 600px) {
+    .productos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .destacado {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+}
+
+/* Responsive desktop */
+@media (min-width: 900px) {
+    .tienda-layout {
+        grid-template-areas:
+            "header header"
+            "sidebar productos"
+            "footer footer";
+        grid-template-columns: 250px 1fr;
+    }
+
+    .productos-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
